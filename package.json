@@ -1,6 +1,6 @@
 {
   "name": "@eryshev/eslint-plugin-fsd",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "plugin for FSD projects",
   "keywords": [
     "eslint",
