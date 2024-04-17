@@ -1,6 +1,6 @@
 {
-  "name": "eslint-plugin-fsd",
-  "version": "0.0.0",
+  "name": "@eryshev/eslint-plugin-fsd",
+  "version": "0.0.1",
   "description": "plugin for FSD projects",
   "keywords": [
     "eslint",
@@ -34,5 +34,5 @@
   "peerDependencies": {
     "eslint": ">=7"
   },
-  "license": "ISC"
+  "license": "MIT"
 }
