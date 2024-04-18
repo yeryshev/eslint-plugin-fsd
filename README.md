@@ -37,3 +37,12 @@ Then configure the rules you want to use under the rules section.
 }
 ```
 
+Use alias paths.
+
+```json
+{
+  "rules": {
+    "@eryshev/fsd/path-checker": ["error", { "alias": "@" }],
+  }
+}
+```
