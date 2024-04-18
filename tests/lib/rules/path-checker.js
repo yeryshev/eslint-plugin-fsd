@@ -9,23 +9,39 @@
 //------------------------------------------------------------------------------
 
 const rule = require("../../../lib/rules/path-checker"),
-  RuleTester = require("eslint").RuleTester;
+    RuleTester = require("eslint").RuleTester;
 
 
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester();
+const ruleTester = new RuleTester({
+  parserOptions: {
+    ecmaVersion: 6,
+    sourceType: 'module',
+  },
+});
+
 ruleTester.run("path-checker", rule, {
   valid: [
-    // give me some code that won't trigger a warning
+    {
+      filename: `project/src/entities/Comment/model/services/deleteComment/deleteComment.ts`,
+      code: `import { Comment } from '../../types/Comment';`,
+      errors: [],
+    },
   ],
 
   invalid: [
     {
-      code: "",
-      errors: [{ message: "Fill me in.", type: "Me too" }],
+      filename: `project/src/entities/Comment/model/services/deleteComment/deleteComment.ts`,
+      code: `import { Comment } from '@/entities/Comment';`,
+      errors: [{ message: `Import should be relative`}],
+      options: [
+        {
+          alias: '@',
+        },
+      ],
     },
   ],
 });
