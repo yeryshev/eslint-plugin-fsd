@@ -14,6 +14,12 @@ const ruleTester = new RuleTester({
   },
 });
 
+const options = [
+  {
+    alias: '@',
+  },
+]
+
 ruleTester.run("path-checker", rule, {
   valid: [
     {
@@ -27,12 +33,8 @@ ruleTester.run("path-checker", rule, {
     {
       filename: `project/src/entities/Comment/model/services/deleteComment/deleteComment.ts`,
       code: `import { Comment } from '@/entities/Comment';`,
-      errors: [{ message: `Import should be relative`}],
-      options: [
-        {
-          alias: '@',
-        },
-      ],
+      errors: [{ messageId: `shouldBeRelative`}],
+      options,
     },
   ],
 });

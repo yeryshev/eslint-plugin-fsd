@@ -32,7 +32,8 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
     "rules": {
-      "@eryshev/fsd/path-checker": "error"
+      "@eryshev/fsd/path-checker": "error",
+      "@eryshev/fsd/public-api-imports": "error"
     }
 }
 ```
@@ -43,6 +44,7 @@ Use alias paths.
 {
   "rules": {
     "@eryshev/fsd/path-checker": ["error", { "alias": "@" }],
+    "@eryshev/fsd/public-api-imports": ["error", { "alias": "@" }]
   }
 }
 ```
