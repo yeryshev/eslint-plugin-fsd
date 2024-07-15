@@ -48,3 +48,13 @@ Use alias paths.
   }
 }
 ```
+
+Use test files pattern for path-checker.
+
+```json
+{
+  "rules": {
+    "@eryshev/fsd/path-checker": ["error", { "testFilesPatterns": ["**/*.test.*", "**/*.stories.*"] }]
+  }
+}
+```
