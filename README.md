@@ -58,3 +58,14 @@ Use test files pattern for path-checker.
   }
 }
 ```
+
+
+Use ignore import pattern for layer-imports.
+
+```json
+{
+  "rules": {
+    "@eryshev/fsd/layer-imports": ["error", { "ignoreImportPatterns": ["**/StoreProvider"] }]
+  }
+}
+```
