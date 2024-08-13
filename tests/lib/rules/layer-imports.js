@@ -2,10 +2,10 @@
  * @fileoverview FSD slice imports checker
  * @author Vadim Eryshev
  */
-"use strict";
+'use strict';
 
 const rule = require('../../../lib/rules/layer-imports'),
-RuleTester = require('eslint').RuleTester;
+  RuleTester = require('eslint').RuleTester;
 
 const ruleTester = new RuleTester({
   parserOptions: {

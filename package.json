@@ -1,6 +1,6 @@
 {
   "name": "@eryshev/eslint-plugin-fsd",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "plugin for FSD projects",
   "keywords": [
     "eslint",
@@ -23,11 +23,14 @@
   },
   "devDependencies": {
     "eslint": "^8.19.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-doc-generator": "^1.0.0",
     "eslint-plugin-eslint-plugin": "^5.0.0",
     "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "mocha": "^10.0.0",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "prettier": "3.3.3"
   },
   "engines": {
     "node": "^14.17.0 || ^16.0.0 || >= 18.0.0"
