@@ -4,37 +4,44 @@
  */
 'use strict';
 
+//------------------------------------------------------------------------------
+// Requirements
+//------------------------------------------------------------------------------
+
 const rule = require('../../../lib/rules/path-checker'),
   RuleTester = require('eslint').RuleTester;
 
+//------------------------------------------------------------------------------
+// Tests
+//------------------------------------------------------------------------------
+
 const ruleTester = new RuleTester({
-  parserOptions: {
-    ecmaVersion: 6,
-    sourceType: 'module',
-  },
+  parserOptions: { ecmaVersion: 6, sourceType: 'module' },
 });
-
-const options = [
-  {
-    alias: '@',
-  },
-];
-
 ruleTester.run('path-checker', rule, {
   valid: [
     {
-      filename: `project/src/entities/Comment/model/services/deleteComment/deleteComment.ts`,
-      code: `import { Comment } from '../../types/Comment';`,
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\Article',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '../../model/slices/addCommentFormSlice'",
       errors: [],
     },
   ],
 
   invalid: [
     {
-      filename: `project/src/entities/Comment/model/services/deleteComment/deleteComment.ts`,
-      code: `import { Comment } from '@/entities/Comment';`,
-      errors: [{ messageId: `shouldBeRelative` }],
-      options,
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\Article',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/model/slices/addCommentFormSlice'",
+      errors: [{ message: 'В рамках одного слайса все пути должны быть относительными' }],
+      options: [
+        {
+          alias: '@',
+        },
+      ],
+    },
+    {
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\Article',
+      code: "import { addCommentFormActions, addCommentFormReducer } from 'entities/Article/model/slices/addCommentFormSlice'",
+      errors: [{ message: 'В рамках одного слайса все пути должны быть относительными' }],
     },
   ],
 });

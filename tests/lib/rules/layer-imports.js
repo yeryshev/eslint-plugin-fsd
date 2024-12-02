@@ -1,71 +1,54 @@
-/**
- * @fileoverview FSD slice imports checker
- * @author Vadim Eryshev
- */
-'use strict';
-
 const rule = require('../../../lib/rules/layer-imports'),
   RuleTester = require('eslint').RuleTester;
-
-const ruleTester = new RuleTester({
-  parserOptions: {
-    ecmaVersion: 6,
-    sourceType: 'module',
-  },
-});
 
 const aliasOptions = [
   {
     alias: '@',
   },
 ];
-
-const errorMessage = [
-  {
-    messageId: 'notFromUnderlying',
-  },
-];
-
+const ruleTester = new RuleTester({
+  parserOptions: { ecmaVersion: 6, sourceType: 'module' },
+});
 ruleTester.run('layer-imports', rule, {
   valid: [
     {
-      filename: '/project/src/features/Article',
-      code: "import { Button } from '@/shared/ui'",
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\features\\Article',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/shared/Button.tsx'",
       errors: [],
       options: aliasOptions,
     },
     {
-      filename: '/project/src/features/Article',
-      code: "import { addCommentFormActions } from '@/entities/Article'",
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\features\\Article',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article'",
       errors: [],
       options: aliasOptions,
     },
     {
-      filename: '/project/src/app/providers',
-      code: "import { addCommentFormActions, addCommentFormReducer } from '@/widgets/Article'",
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\app\\providers',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/widgets/Articl'",
       errors: [],
       options: aliasOptions,
     },
     {
-      filename: '/project/src/widgets/pages',
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\widgets\\pages',
       code: "import { useLocation } from 'react-router-dom'",
       errors: [],
       options: aliasOptions,
     },
     {
-      filename: '/project/src/app/providers',
-      code: "import { addCommentFormActions } from 'redux'",
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\app\\providers',
+      code: "import { addCommentFormActions, addCommentFormReducer } from 'redux'",
       errors: [],
       options: aliasOptions,
     },
     {
-      filename: '/project/src/index.tsx',
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\index.tsx',
       code: "import { StoreProvider } from '@/app/providers/StoreProvider';",
       errors: [],
       options: aliasOptions,
     },
     {
-      filename: '/project/src/entities/Article.tsx',
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\Article.tsx',
       code: "import { StateSchema } from '@/app/providers/StoreProvider'",
       errors: [],
       options: [
@@ -79,21 +62,36 @@ ruleTester.run('layer-imports', rule, {
 
   invalid: [
     {
-      filename: '/project/src/entities/providers',
-      code: "import { addCommentFormActions } from '@/features/Article'",
-      errors: errorMessage,
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\providers',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/features/Articl'",
+      errors: [
+        {
+          message:
+            'Слой может импортировать в себя только нижележащие слои (shared, entities, features, widgets, pages, app)',
+        },
+      ],
       options: aliasOptions,
     },
     {
-      filename: '/project/src/features/providers',
-      code: "import { addCommentFormActions, addCommentFormReducer } from '@/widgets/Article'",
-      errors: errorMessage,
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\features\\providers',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/widgets/Articl'",
+      errors: [
+        {
+          message:
+            'Слой может импортировать в себя только нижележащие слои (shared, entities, features, widgets, pages, app)',
+        },
+      ],
       options: aliasOptions,
     },
     {
-      filename: '/project/src/entities/providers',
-      code: "import { addCommentFormActions, addCommentFormReducer } from '@/widgets/Article'",
-      errors: errorMessage,
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\providers',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/widgets/Articl'",
+      errors: [
+        {
+          message:
+            'Слой может импортировать в себя только нижележащие слои (shared, entities, features, widgets, pages, app)',
+        },
+      ],
       options: aliasOptions,
     },
   ],

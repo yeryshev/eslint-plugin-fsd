@@ -1,6 +1,6 @@
 {
   "name": "@eryshev/eslint-plugin-fsd",
-  "version": "0.0.10",
+  "version": "0.0.16",
   "description": "plugin for FSD projects",
   "keywords": [
     "eslint",
@@ -9,7 +9,6 @@
   ],
   "author": "Vadim Eryshev",
   "main": "./lib/index.js",
-  "exports": "./lib/index.js",
   "scripts": {
     "lint": "npm-run-all \"lint:*\"",
     "lint:eslint-docs": "npm-run-all \"update:eslint-docs -- --check\"",
@@ -18,7 +17,7 @@
     "update:eslint-docs": "eslint-doc-generator"
   },
   "dependencies": {
-    "micromatch": "^4.0.7",
+    "micromatch": "4.0.8",
     "requireindex": "^1.2.0"
   },
   "devDependencies": {
